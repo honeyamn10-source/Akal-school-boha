@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akal School Boha · Mansa, Punjab</title>
+  <!-- Font Awesome 6 (free) & Google Font Inter -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+      --primary: #0a3d62;
+      --primary-dark: #05314f;
+      --accent: #f39c12;
+      --gray-light: #f8fafc;
+      --gray-mid: #e2e8f0;
+      --text-dark: #1e293b;
+      --text-soft: #334155;
+      --white: #ffffff;
+      --shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.01);
+      --radius: 1rem;
+      --radius-sm: 0.5rem;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    /* header / nav */
+    .navbar {
+      background: white;
+      box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .logo span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      display: block;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-menu a:hover {
+      color: var(--accent);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    /* slider / hero */
+    .hero {
+      position: relative;
+      height: 85vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+    }
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%);
+    }
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      max-width: 700px;
+      margin-left: 10%;
+      padding: 2rem;
+    }
+    .slide-content h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .slide-content p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+    .hero-controls {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 1rem;
+    }
+    .hero-controls button {
+      background: rgba(255,255,255,0.3);
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
+    }
+    .hero-controls button:hover {
+      background: var(--accent);
+    }
+    .dots {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .dot.active-dot {
+      background: var(--accent);
+      width: 30px;
+    }
+
+    /* cards grid */
+    .grid-3, .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow);
+      transition: all 0.25s;
+      border: 1px solid var(--gray-mid);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+    }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    /* teacher profile */
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .teacher-card {
+      text-align: center;
+      background: var(--gray-light);
+      padding: 2rem 1rem;
+      border-radius: var(--radius);
+    }
+    .teacher-card .avatar {
+      width: 120px;
+      height: 120px;
+      background: var(--gray-mid);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 3rem;
+      border: 3px solid white;
+      box-shadow: var(--shadow);
+    }
+
+    /* gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      background: var(--gray-mid);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 2rem;
+      transition: 0.2s;
+      border: 2px solid transparent;
+    }
+    .gallery-item:hover {
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
+
+    /* contact & map */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+    .info-item i {
+      font-size: 1.5rem;
+      color: var(--accent);
+      width: 40px;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+    }
+    .map-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 300px;
+    }
+
+    /* footer */
+    .footer {
+      background: var(--primary-dark);
+      color: white;
+      padding: 3rem 0 1.5rem;
+    }
+    .footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: var(--accent);
+    }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .social-links a {
+      font-size: 1.8rem;
+    }
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #2563eb30;
+      padding-top: 2rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        text-align: center;
+        padding: 2rem;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        gap: 1.5rem;
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .hamburger {
+        display: block;
+      }
+      .hero .slide-content h1 {
+        font-size: 2.5rem;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        AKAL SCHOOL <span>Boha · Mansa (Punjab)</span>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#teachers">Teachers</a></li>
+        <li><a href="#students">Students</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#online">Online</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </div>
+  </nav>
+
+  <!-- HERO SLIDER (Home) -->
+  <section class="hero" id="home">
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1932&auto=format&fit=crop');">
+      <div class="slide-content">
+        <h1>Welcome to Akal School Boha</h1>
+        <p>Est. 2000 · Grades 1-12 · Punjabi medium · Co-educational</p>
+        <a href="#about" class="btn">Explore school</a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop');">
+      <div class="slide-content">
+        <h1>No admission fee for girls</h1>
+        <p>Special concession on Women's Day – Enrol today</p>
+        <a href="#admissions" class="btn">Admission 2025</a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1932&auto=format&fit=crop');">
+      <div class="slide-content">
+        <h1>Quality education in Punjab</h1>
+        <p>14 dedicated teachers · 215+ library books · Vibrant playground</p>
+        <a href="#about" class="btn">Discover more</a>
+      </div>
+    </div>
+    <div class="hero-controls">
+      <button id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+      <button id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="dots" id="sliderDots">
+      <span class="dot active-dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About the school</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+        <div>
+          <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Akal School Boha was established in 2000 and is managed by a private trust (Others). Located in the urban area of Boha, block Budhlada, district Mansa, Punjab.</p>
+          <ul style="list-style: none; line-height: 2.2;">
+            <li><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> <strong>Grades:</strong> 1 to 12 (State Board)</li>
+            <li><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> <strong>Medium:</strong> Punjabi · Co-educational</li>
+            <li><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> <strong>Head teacher:</strong> CHIRINJEEV SINGH</li>
+            <li><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> <strong>Faculty:</strong> 14 teachers (4 male, 10 female, 2 pre-primary)</li>
+            <li><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> <strong>Infra:</strong> 12 classrooms, pucca building, playground, library (215 books)</li>
+            <li><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> <strong>UDISE code:</strong> 03150201811</li>
+          </ul>
+        </div>
+        <div style="background: var(--gray-light); padding: 2rem; border-radius: var(--radius);">
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">Mission & Vision</h3>
+          <p>"Empowering rural students through value-based education in Punjabi, preserving culture while embracing modernity."</p>
+          <h3 style="color: var(--primary); margin: 2rem 0 1rem;">Principal's message</h3>
+          <p>"At Akal School, every child is nurtured to excel academically and morally. Our dedicated staff ensures holistic growth." – <strong>CHIRINJEEV SINGH</strong></p>
+          <p style="margin-top: 1.5rem;">🏆 Achievements: 100% result in class 10/12 (2024), active sports & cultural participation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMISSIONS -->
+  <section class="section" style="background: var(--gray-light);" id="admissions">
+    <div class="container">
+      <h2 class="section-title">Admissions 2025-26</h2>
+      <div class="grid-3">
+        <div class="card"><i class="fas fa-file-signature"></i><h3>Simple process</h3><p>1. Inquiry → 2. Form submission → 3. Interaction → 4. Confirmation</p></div>
+        <div class="card"><i class="fas fa-users"></i><h3>Eligibility</h3><p>Age 5+ for class 1. For higher classes: based on previous schooling.</p></div>
+        <div class="card"><i class="fas fa-rupee-sign"></i><h3>Fee structure</h3><p>Affordable fees. Special concession for girls (no admission fee). Contact office for details.</p></div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="#" class="btn" style="background: var(--accent); color: var(--primary-dark);"><i class="fas fa-download"></i> Download admission form</a>
+        <a href="#" class="btn" style="margin-left: 1rem;"><i class="fas fa-edit"></i> Apply online</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADEMICS -->
+  <section class="section" id="academics">
+    <div class="container">
+      <h2 class="section-title">Academics</h2>
+      <div class="grid-4">
+        <div class="card"><i class="fas fa-book-open"></i><h3>Curriculum</h3><p>Punjab School Education Board (PSEB). Punjabi medium with English as subject.</p></div>
+        <div class="card"><i class="fas fa-flask"></i><h3>Subjects (6-12)</h3><p>Science, Maths, Social Studies, Punjabi, English, Computers.</p></div>
+        <div class="card"><i class="fas fa-layer-group"></i><h3>Departments</h3><p>Languages, Science, Humanities, Physical Education.</p></div>
+        <div class="card"><i class="fas fa-calendar-alt"></i><h3>Timetable</h3><p>Mon-Fri 8:30 am – 2:30 pm. Download syllabus <a href="#" style="color:var(--accent)">here</a>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHERS & STAFF -->
+  <section class="section" style="background: var(--gray-light);" id="teachers">
+    <div class="container">
+      <h2 class="section-title">Our teachers</h2>
+      <div class="teacher-grid">
+        <div class="teacher-card"><div class="avatar"><i class="fas fa-chalkboard-teacher"></i></div><h4>CHIRINJEEV SINGH</h4><p>Head Teacher · 18 yrs exp</p></div>
+        <div class="teacher-card"><div class="avatar"><i class="fas fa-female"></i></div><h4>Gurpreet Kaur</h4><p>Senior Punjabi</p></div>
+        <div class="teacher-card"><div class="avatar"><i class="fas fa-user-tie"></i></div><h4>Harjinder Singh</h4><p>Mathematics</p></div>
+        <div class="teacher-card"><div class="avatar"><i class="fas fa-user-graduate"></i></div><h4>+11 more dedicated staff</h4><p>4 male · 10 female teachers</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT SECTION -->
+  <section class="section" id="students">
+    <div class="container">
+      <h2 class="section-title">Student corner</h2>
+      <div class="grid-4">
+        <div class="card"><i class="fas fa-pencil-alt"></i><h3>Homework</h3><p>Class-wise assignments updated weekly.</p></div>
+        <div class="card"><i class="fas fa-download"></i><h3>Study material</h3><p>Notes, model papers, e-books.</p></div>
+        <div class="card"><i class="fas fa-calendar-check"></i><h3>Exam schedule</h3><p>Term dates & timetable.</p></div>
+        <div class="card"><i class="fas fa-chart-line"></i><h3>Results portal</h3><p>Login to view progress.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS & EVENTS -->
+  <section class="section" style="background: var(--gray-light);" id="news">
+    <div class="container">
+      <h2 class="section-title">News & events</h2>
+      <div class="grid-3">
+        <div class="card"><i class="fas fa-gift"></i><h3>Annual function 2025</h3><p>March 28 – Cultural performances & prize distribution.</p></div>
+        <div class="card"><i class="fas fa-futbol"></i><h3>Sports day</h3><p>Held in December. Athletics, kabaddi, and more.</p></div>
+        <div class="card"><i class="fas fa-bullhorn"></i><h3>Holiday: 14 April</h3><p>Dr. Ambedkar Jayanti / Baisakhi – school closed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><i class="fas fa-image"></i> Event</div>
+        <div class="gallery-item"><i class="fas fa-video"></i> Sports</div>
+        <div class="gallery-item"><i class="fas fa-child"></i> Classroom</div>
+        <div class="gallery-item"><i class="fas fa-tree"></i> Playground</div>
+        <div class="gallery-item"><i class="fas fa-book"></i> Library</div>
+        <div class="gallery-item"><i class="fas fa-trophy"></i> Prize day</div>
+      </div>
+      <p style="margin-top:2rem; text-align:center">📺 Visit our <a href="https://www.youtube.com/@akalschoolboha3328" target="_blank">YouTube channel</a> for 50+ videos.</p>
+    </div>
+  </section>
+
+  <!-- ONLINE SERVICES -->
+  <section class="section" style="background: var(--gray-light);" id="online">
+    <div class="container">
+      <h2 class="section-title">Online services</h2>
+      <div class="grid-4">
+        <div class="card"><i class="fas fa-user-circle"></i><h3>Student login</h3><p>Attendance, marks, homework.</p><a href="#" style="color:var(--primary)">Login →</a></div>
+        <div class="card"><i class="fas fa-credit-card"></i><h3>Fee payment</h3><p>Pay online (cards/UPI).</p><a href="#" style="color:var(--primary)">Pay now</a></div>
+        <div class="card"><i class="fas fa-clock"></i><h3>Attendance tracking</h3><p>Real-time via parent portal.</p></div>
+        <div class="card"><i class="fas fa-laptop"></i><h3>LMS (coming soon)</h3><p>Digital classroom resources.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICES (Announcements) -->
+  <section class="section" id="notices">
+    <div class="container">
+      <h2 class="section-title">Notices</h2>
+      <div style="background: #fff3cd; border-left: 5px solid var(--accent); padding: 1.5rem; border-radius: 0.5rem;">
+        <ul style="list-style: none;">
+          <li><i class="fas fa-bullhorn" style="color:var(--accent); margin-right:1rem;"></i> <strong>8 March:</strong> NO ADMISSION FEE FOR GIRLS (special Women's Day offer).</li>
+          <li style="margin-top:0.8rem;"><i class="fas fa-calendar" style="color:var(--accent); margin-right:1rem;"></i> <strong>Summer break:</strong> 20 May – 30 June. School reopens 1 July.</li>
+          <li style="margin-top:0.8rem;"><i class="fas fa-file-alt" style="color:var(--accent); margin-right:1rem;"></i> <strong>PTA meeting:</strong> 5 April, 10:00 am.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" style="background: var(--gray-light);" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact & location</h2>
+      <div class="contact-grid">
+        <div>
+          <div class="info-item"><i class="fas fa-map-pin"></i><div><strong>Akal School Boha</strong><br>Boha, District Mansa, Punjab – 151501</div></div>
+          <div class="info-item"><i class="fas fa-phone-alt"></i><div>+91 12345 67890, +91 98765 43210</div></div>
+          <div class="info-item"><i class="fas fa-envelope"></i><div>akalschool.boha@edu.in</div></div>
+          <div class="info-item"><i class="fab fa-facebook"></i><div><a href="https://www.facebook.com/p/AKAL-School-BOHA-100064069417733/" target="_blank">facebook.com/AkalSchoolBoha</a></div></div>
+          <div class="info-item"><i class="fab fa-instagram"></i><div><a href="https://www.instagram.com/akal_schoolboha1234/" target="_blank">@akal_schoolboha1234</a></div></div>
+          <div class="info-item"><i class="fab fa-youtube"></i><div><a href="https://www.youtube.com/@akalschoolboha3328" target="_blank">@akalschoolboha3328</a></div></div>
+        </div>
+        <div>
+          <form class="contact-form">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Email address" required>
+            <input type="text" placeholder="Subject">
+            <textarea rows="4" placeholder="Message"></textarea>
+            <button class="btn" style="width:100%; background: var(--accent); color: #000;">Send message</button>
+          </form>
+        </div>
+      </div>
+      <div class="map-container" style="margin-top:3rem;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56044.456772187926!2d75.565678!3d29.857261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391234567890abcd%3A0x123456789abcdef!2sBoha%2C%20Punjab!5e0!3m2!1sen!2sin!4v1712345678901!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+        <div>
+          <h3 style="color: white;">AKAL SCHOOL BOHA</h3>
+          <p style="color: #cbd5e1;">Excellence since 2000</p>
+        </div>
+        <div>
+          <p><strong>UDISE code:</strong> 03150201811</p>
+          <p><strong>Head teacher:</strong> CHIRINJEEV SINGH</p>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/p/AKAL-School-BOHA-100064069417733/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/akal_schoolboha1234/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@akalschoolboha3328" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Akal School Boha. All rights reserved. Designed with 🏫 for worth ₹75,000 standard.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT (slider + mobile menu) -->
+  <script>
+    // mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // slider
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    let current = 0;
+
+    function showSlide(index) {
+      if (index >= slides.length) current = 0;
+      else if (index < 0) current = slides.length - 1;
+      else current = index;
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active-dot'));
+      slides[current].classList.add('active');
+      dots[current].classList.add('active-dot');
+    }
+
+    nextBtn.addEventListener('click', () => showSlide(current + 1));
+    prevBtn.addEventListener('click', () => showSlide(current - 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+
+    // auto slide every 6 sec
+    setInterval(() => showSlide(current + 1), 6000);
+
+    // close mobile menu after click (optional)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
