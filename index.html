@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akal School Boha · Excellence since 2000</title>
-  <!-- Font Awesome 6 (free) & Google Font Inter -->
+  <!-- Font Awesome 6 & Google Font Inter -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..800&display=swap" rel="stylesheet">
-  <!-- AOS (Animate on Scroll) for premium feel -->
+  <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
@@ -70,12 +70,6 @@
       background: var(--accent);
       border-radius: 3px;
     }
-    .section-subtitle {
-      font-size: 1.2rem;
-      color: var(--text-soft);
-      max-width: 700px;
-      margin-bottom: 3rem;
-    }
 
     .btn {
       display: inline-block;
@@ -105,6 +99,31 @@
     .btn-outline:hover {
       background: var(--primary);
       color: white;
+    }
+
+    /* floating whatsapp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      background: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 2.2rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      background: #128c7e;
+      transform: scale(1.1);
     }
 
     /* header */
@@ -169,7 +188,7 @@
       color: var(--primary);
     }
 
-    /* ticker (announcement) */
+    /* ticker (announcement) with pause on hover */
     .ticker-wrap {
       background: var(--primary);
       color: white;
@@ -180,6 +199,9 @@
       display: flex;
       animation: ticker 25s linear infinite;
       white-space: nowrap;
+    }
+    .ticker-wrap:hover .ticker {
+      animation-play-state: paused;
     }
     .ticker-item {
       padding: 0 2rem;
@@ -290,7 +312,7 @@
       width: 40px;
     }
 
-    /* stats / why us */
+    /* stats / why us with animated counters (simple static for demo) */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -361,53 +383,12 @@
       margin-top: 1rem;
     }
 
-    /* admission form replica (stylized) */
-    .form-replica {
-      background: var(--gray-light);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      border: 1px dashed var(--primary);
-      box-shadow: var(--shadow-md);
-      font-family: 'Courier New', monospace;
-    }
-    .form-replica h3 {
-      font-family: 'Inter', sans-serif;
-      color: var(--primary);
-      margin-bottom: 2rem;
-      text-align: center;
-      font-weight: 700;
-    }
-    .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px dotted var(--gray-mid);
-      padding-bottom: 1rem;
-    }
-    .field {
-      flex: 1 1 200px;
-      background: white;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      box-shadow: var(--shadow-sm);
-    }
-    .field strong {
-      color: var(--primary);
-      margin-right: 0.5rem;
-    }
-    .signature-line {
-      border-top: 2px solid var(--primary);
-      width: 250px;
-      margin-top: 0.5rem;
-    }
-
-    /* gallery grid - reduced to 5 items */
+    /* gallery grid - 4 items */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
     }
     .gallery-item {
@@ -470,7 +451,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 999;
+      z-index: 99;
       box-shadow: var(--shadow-lg);
     }
     #back-to-top:hover {
@@ -544,12 +525,17 @@
   </style>
 </head>
 <body>
-  <!-- announcement ticker -->
+  <!-- floating whatsapp button -->
+  <a href="https://wa.me/911234567890?text=Hello%20Akal%20School%2C%20I%20have%20a%20query." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- announcement ticker with pause -->
   <div class="ticker-wrap">
     <div class="ticker">
       <div class="ticker-item"><i class="fas fa-bullhorn"></i> Admissions open 2025-26 | No admission fee for girls (Women's Day special)</div>
       <div class="ticker-item"><i class="fas fa-calendar-alt"></i> Annual function March 28 | Sports day results out</div>
-      <div class="ticker-item"><i class="fas fa-file-pdf"></i> Download sample papers & result sheets</div>
+      <div class="ticker-item"><i class="fas fa-file-pdf"></i> Download admission form PDF below</div>
     </div>
   </div>
 
@@ -628,7 +614,7 @@
           <p>“At Akal School, every child is nurtured to excel academically and morally. Our dedicated staff ensures holistic growth.” – <strong>CHIRINJEEV SINGH</strong></p>
         </div>
       </div>
-      <!-- stats / why choose us -->
+      <!-- stats / why choose us with simple counter animation (static but advanced look) -->
       <div class="stats-grid">
         <div class="stat-card" data-aos="zoom-in"><i class="fas fa-calendar-alt"></i><h3>2000</h3><p>Established</p></div>
         <div class="stat-card" data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-chalkboard-teacher"></i><h3>14+</h3><p>Teachers</p></div>
@@ -638,7 +624,7 @@
     </div>
   </section>
 
-  <!-- ADMISSIONS + FORM REPLICA & DOWNLOADABLE PDF -->
+  <!-- ADMISSIONS + PDF DOWNLOAD BUTTON (no sample form) -->
   <section class="section" style="background: var(--gray-light);" id="admissions">
     <div class="container">
       <h2 class="section-title">Admissions 2025-26</h2>
@@ -648,57 +634,12 @@
         <div class="card" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-rupee-sign"></i><h3>Fee structure</h3><p>Affordable fees. Special concession for girls. Contact office.</p></div>
       </div>
 
-      <!-- Admission form replica (physical form style) -->
-      <div style="margin: 4rem 0 2rem;" data-aos="fade-up">
-        <h3 style="font-size: 2rem; color: var(--primary); margin-bottom: 2rem;">📋 Admission form (sample)</h3>
-        <div class="form-replica">
-          <h3>AKKAL SCHOOL BOHA · STUDENT ADMISSION FORM</h3>
-          <div class="form-row">
-            <div class="field"><strong>SESSION:</strong> 2025-26</div>
-            <div class="field"><strong>CLASS:</strong> ______</div>
-            <div class="field"><strong>ADM NO:</strong> ______</div>
-            <div class="field"><strong>DATE:</strong> ______</div>
-          </div>
-          <div class="form-row">
-            <div class="field"><strong>STUDENT NAME:</strong> __________________</div>
-            <div class="field"><strong>UID:</strong> _____________</div>
-          </div>
-          <div class="form-row">
-            <div class="field"><strong>F' NAME SH:</strong> __________________</div>
-            <div class="field"><strong>UID:</strong> _____________</div>
-          </div>
-          <div class="form-row">
-            <div class="field"><strong>M'NAME SMT:</strong> __________________</div>
-            <div class="field"><strong>UID:</strong> _____________</div>
-          </div>
-          <div class="form-row">
-            <div class="field"><strong>DATE OF BIRTH:</strong> _____________</div>
-            <div class="field"><strong>CATEGORY:</strong> GEN / SC / BC</div>
-            <div class="field"><strong>GENDER:</strong> M / F</div>
-          </div>
-          <div class="form-row">
-            <div class="field"><strong>PRESENT ADDRESS:</strong> ________________________</div>
-            <div class="field"><strong>CONTACT:</strong> _____________</div>
-            <div class="field"><strong>BANK A/C:</strong> _____________</div>
-          </div>
-          <div style="margin:2rem 0;"><strong>EDUCATIONAL QUALIFICATION</strong></div>
-          <table style="width:100%; border-collapse: collapse; background:white; border-radius:8px;">
-            <thead><tr style="background:var(--primary); color:white;"><th>CLASS</th><th>SESSION</th><th>SCHOOL</th><th>BOARD</th><th>REGD.NO</th><th>MARKS</th></tr></thead>
-            <tbody><tr><td>______</td><td>______</td><td>______</td><td>______</td><td>______</td><td>______</td></tr></tbody>
-          </table>
-          <p style="margin:2rem 0;">I hereby declare that all the above information is true and correct. I shall abide by the rules and regulations of school and the concerned board.</p>
-          <div style="display:flex; justify-content:space-between; margin:2rem 0;">
-            <div><strong>SIGNATURE OF PARENTS</strong><div class="signature-line"></div></div>
-            <div><strong>REFERRED BY</strong><div class="signature-line"></div></div>
-          </div>
-          <p><strong>Adm.fee ______ Annual fee ______ Exam fee ______ I Card fee ______</strong></p>
-          <p><strong>Documents received:</strong> DOB ______ Aadhar (S/F/M) ______ SLC from School ______</p>
-          <!-- Fixed download link: actual PDF file will be downloaded when clicked -->
-          <div style="background:var(--accent-soft); padding:1rem; border-radius:8px; margin-top:1.5rem; text-align:center;">
-            <i class="fas fa-download"></i> <a href="admission-form.pdf" download style="color:var(--primary-dark); font-weight:bold; text-decoration:none;">📥 Download printable PDF version</a>
-            <p style="font-size:0.8rem; margin-top:0.5rem;">(After uploading the PDF, place it in the same folder as index.html)</p>
-          </div>
-        </div>
+      <!-- Direct PDF download button (sample form removed) -->
+      <div style="text-align: center; margin: 3rem 0;" data-aos="fade-up">
+        <a href="CamScanner 2026-03-12 03.59.pdf" download class="btn" style="background: var(--accent); color: var(--primary-dark); font-size: 1.2rem; padding: 1rem 3rem;">
+          <i class="fas fa-download"></i> Download Admission Form PDF
+        </a>
+        <p style="margin-top: 1rem; color: var(--text-soft);">Click to download the official admission form (PDF)</p>
       </div>
 
       <!-- ONLINE REGISTRATION (coming soon) -->
@@ -711,7 +652,7 @@
     </div>
   </section>
 
-  <!-- ACADEMICS & ONLINE SERVICES (all coming soon badges) -->
+  <!-- ACADEMICS & ONLINE SERVICES -->
   <section class="section" id="academics">
     <div class="container">
       <h2 class="section-title">Academics & online services</h2>
@@ -750,7 +691,7 @@
     </div>
   </section>
 
-  <!-- GALLERY (reduced to 5 items) -->
+  <!-- GALLERY (4 items) -->
   <section class="section" style="background: var(--gray-light);" id="gallery">
     <div class="container">
       <h2 class="section-title">School gallery</h2>
@@ -759,13 +700,12 @@
         <div class="gallery-item"><i class="fas fa-futbol"></i><span>Sports day</span></div>
         <div class="gallery-item"><i class="fas fa-book"></i><span>Library</span></div>
         <div class="gallery-item"><i class="fas fa-child"></i><span>Playground</span></div>
-        <div class="gallery-item"><i class="fas fa-trophy"></i><span>Prize ceremony</span></div>
       </div>
       <p style="margin-top:2rem; text-align:center">📺 Visit our <a href="https://www.youtube.com/@akalschoolboha3328" target="_blank">YouTube channel</a> for 50+ videos.</p>
     </div>
   </section>
 
-  <!-- TESTIMONIALS (premium touch) -->
+  <!-- TESTIMONIALS -->
   <section class="section">
     <div class="container">
       <h2 class="section-title">What parents say</h2>
@@ -809,7 +749,7 @@
   <!-- BACK TO TOP BUTTON -->
   <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- FOOTER -->
+  <!-- FOOTER with dynamic year -->
   <footer class="footer">
     <div class="container">
       <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
