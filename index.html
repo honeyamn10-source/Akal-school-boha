@@ -402,11 +402,13 @@
       margin-top: 0.5rem;
     }
 
-    /* gallery grid */
+    /* gallery grid - reduced to 5 items */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
     .gallery-item {
       aspect-ratio: 4/3;
@@ -636,7 +638,7 @@
     </div>
   </section>
 
-  <!-- ADMISSIONS + FORM REPLICA & ONLINE REGISTRATION (COMING SOON) -->
+  <!-- ADMISSIONS + FORM REPLICA & DOWNLOADABLE PDF -->
   <section class="section" style="background: var(--gray-light);" id="admissions">
     <div class="container">
       <h2 class="section-title">Admissions 2025-26</h2>
@@ -691,8 +693,10 @@
           </div>
           <p><strong>Adm.fee ______ Annual fee ______ Exam fee ______ I Card fee ______</strong></p>
           <p><strong>Documents received:</strong> DOB ______ Aadhar (S/F/M) ______ SLC from School ______</p>
+          <!-- Fixed download link: actual PDF file will be downloaded when clicked -->
           <div style="background:var(--accent-soft); padding:1rem; border-radius:8px; margin-top:1.5rem; text-align:center;">
-            <i class="fas fa-download"></i> <a href="#" style="color:var(--primary-dark); font-weight:bold;">Download printable PDF version</a>
+            <i class="fas fa-download"></i> <a href="admission-form.pdf" download style="color:var(--primary-dark); font-weight:bold; text-decoration:none;">📥 Download printable PDF version</a>
+            <p style="font-size:0.8rem; margin-top:0.5rem;">(After uploading the PDF, place it in the same folder as index.html)</p>
           </div>
         </div>
       </div>
@@ -746,7 +750,7 @@
     </div>
   </section>
 
-  <!-- GALLERY (more photos) -->
+  <!-- GALLERY (reduced to 5 items) -->
   <section class="section" style="background: var(--gray-light);" id="gallery">
     <div class="container">
       <h2 class="section-title">School gallery</h2>
@@ -755,10 +759,7 @@
         <div class="gallery-item"><i class="fas fa-futbol"></i><span>Sports day</span></div>
         <div class="gallery-item"><i class="fas fa-book"></i><span>Library</span></div>
         <div class="gallery-item"><i class="fas fa-child"></i><span>Playground</span></div>
-        <div class="gallery-item"><i class="fas fa-music"></i><span>Cultural fest</span></div>
         <div class="gallery-item"><i class="fas fa-trophy"></i><span>Prize ceremony</span></div>
-        <div class="gallery-item"><i class="fas fa-laptop"></i><span>Computer lab</span></div>
-        <div class="gallery-item"><i class="fas fa-paint-brush"></i><span>Art class</span></div>
       </div>
       <p style="margin-top:2rem; text-align:center">📺 Visit our <a href="https://www.youtube.com/@akalschoolboha3328" target="_blank">YouTube channel</a> for 50+ videos.</p>
     </div>
