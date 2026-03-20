@@ -244,20 +244,6 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:3.5rem 0 2
 .udise-badge{background:rgba(255,255,255,.07);padding:.28rem .85rem;border-radius:20px;font-size:.75rem;color:rgba(255,255,255,.38)}
 
 
-/* EMAILJS SETUP BANNER */
-.setup-banner{background:linear-gradient(135deg,#1e3a5f,#0c2340);border:2px dashed rgba(245,200,66,.4);border-radius:14px;padding:1.5rem 2rem;margin-bottom:1.5rem;display:flex;gap:1.2rem;align-items:flex-start}
-.setup-banner-hide{display:none}
-.setup-icon{width:42px;height:42px;background:rgba(245,200,66,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;flex-shrink:0}
-.setup-banner h4{color:var(--gold);font-size:.9rem;font-weight:700;margin-bottom:.4rem}
-.setup-banner p{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.65}
-.setup-banner a{color:var(--gold);font-weight:700;text-decoration:none}
-.setup-banner a:hover{text-decoration:underline}
-.setup-steps{list-style:none;margin-top:.6rem}
-.setup-steps li{font-size:.8rem;color:rgba(255,255,255,.65);padding:.2rem 0;display:flex;gap:.5rem;align-items:flex-start}
-.setup-steps li::before{content:"\2192";color:var(--gold);flex-shrink:0}
-
-/* TRICK CARDS (Math + English) */
-.trick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .trick-card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.5rem;transition:.25s;display:flex;flex-direction:column;gap:.8rem}
 .trick-card:hover{background:rgba(255,255,255,.09);transform:translateY(-4px)}
 .trick-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.67rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .75rem;border-radius:20px;width:fit-content}
@@ -577,21 +563,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:3.5rem 0 2
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.2!2d75.5297466!3d29.8358067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39110e1e29a2921b%3A0x34d7c0d63fd88254!2sAkal%20School%20Boha!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-              <div class="setup-banner" id="setupBanner">
-          <div class="setup-icon"><i class="fas fa-envelope-open-text"></i></div>
-          <div>
-            <h4>&#9888; Direct Email Setup Required</h4>
-            <p>To receive form submissions directly in <strong>schoolboha@gmail.com</strong>, complete these 3 free steps:</p>
-            <ul class="setup-steps">
-              <li>Go to <a href="https://www.emailjs.com" target="_blank">emailjs.com</a> &rarr; Sign up FREE with schoolboha@gmail.com</li>
-              <li>Add Email Service &rarr; connect Gmail &rarr; copy <strong>Service ID</strong></li>
-              <li>Create 2 templates (contact + admission) &rarr; copy <strong>Template IDs</strong></li>
-              <li>Go to Account &rarr; copy <strong>Public Key</strong></li>
-              <li>Open this HTML file in Notepad &rarr; replace the 4 <strong>YOUR_...</strong> values at the top of the script</li>
-            </ul>
-            <p style="margin-top:.6rem;font-size:.78rem;color:rgba(255,255,255,.45)">Until then, forms will open your email app as a backup. &nbsp;<a href="#" onclick="document.getElementById('setupBanner').classList.add('setup-banner-hide');return false;">Dismiss</a></p>
-          </div>
-        </div>
+              
         <div class="cf">
         <h3>Send us a Message</h3>
         <div class="form-row">
