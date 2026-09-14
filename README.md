@@ -1,3 +1,5 @@
+![Akal School Boha — project cover](https://github.com/honeyamn10-source/honeyamn10-source/blob/main/assets/Akal-school-boha.svg?raw=true)
+
 # Akal School Boha — School Website
 
 A single-page school website presenting school information, facilities, admissions, faculty, contact forms, and student learning resources.
