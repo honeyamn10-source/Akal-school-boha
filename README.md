@@ -2,6 +2,8 @@
 
 # Akal School Boha — School Website
 
+**Client work:** Website maintained for an Akal School client. This repository is not presented as a reusable school SaaS product; school branding, photos, documents and content require the client's permission for reuse.
+
 A single-page school website presenting school information, facilities, admissions, faculty, contact forms, and student learning resources.
 
 **Stage:** Website project. Hosting, form delivery, and published school information should be verified for each deployment.
